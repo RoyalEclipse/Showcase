@@ -1,0 +1,38 @@
+#!/bin/sed -nEf
+
+# formats the date and prints it
+/<p>Platnost pro/{ 
+    s/<p>Platnost pro ([0-9]+)\. ([0-9]+)\. ([0-9]+)\,.*: ([0-9]+)<.*/\1\.\2\.\3 \#\4/p; 
+}
+
+# A friend of mine had to explain to me how the hold and pattern spaces work and interact
+# as I, in fact, have Alzheimer's, but at least this thing works now, and it only cost me
+# my last remaining braincells
+
+# when you encounter tr start grabbing lines
+/<tr>/{
+    
+    n                                   # grab next line
+    s/<t[hd].*>(.*)<\/t[hd]>/\1|/       # remove the bits of html
+    H                                   # append to hold space
+
+    n                                   # repeat ad nauseum
+    s/<t[hd].*>(.*)<\/t[hd]>/\1|/
+    H
+
+    n
+    s/<t[hd].*>(.*)<\/t[hd]>/\1|/
+    H
+
+    n
+    s/<t[hd].*>(.*)<\/t[hd]>/\1|/
+    H
+
+    n
+    s/<t[hd].*>(.*)<\/t[hd]>/\1/        # this one does not have | at the end
+    H
+
+    z                                   # clear pattern space
+    x                                   # switch hold and pattern space
+    s/[ \t\n]//gp                       # remove the annoying bits and print
+}

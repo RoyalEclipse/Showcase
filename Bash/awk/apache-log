@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# CURROOT=$( pwd )
+TEMPFILE=$( mktemp )
+trap cleanup EXIT
+
+cleanup(){
+    rm "$TEMPFILE"
+}
+
+help(){
+    echo "Thank you for using the Umbrella Corp students Program!"
+    echo "This script parses a log."
+    echo "OPTIONS"
+    echo "-h Shows you this text!"
+    echo "Thats it, have fun!"
+    exit
+}
+
+# loading of options
+while getopts "h" option; do
+   case $option in
+        h) help;;
+        ?) help;;
+   esac
+done
+
+echo -e "IP adresa\t\tPožadavků\tVelikost dat\t\t%pož\t\t%dat"
+
+awk '{
+    
+!count[$7]++;
+data[$7]=data[$7] + $9;
+
+}
+
+END{
+    
+    for(key in count){
+        totalreq += count[key]
+    }
+    for(key in data){
+        totaldat += data[key]
+    }
+
+    for(key in count){
+        percentagecount = 100*count[key]/totalreq;
+        percentagedata = 100*data[key]/totaldat;
+
+        printf("%s\t\t%d\t\t%d\t\t\t%.1f%%\t\t%.1f%%\n",key,count[key],data[key],percentagecount, percentagedata);
+
+    }
+        
+}' 'apache.log' | sort -k2 -nr > "$TEMPFILE"
+# I'm having C flashbacks
+cat "$TEMPFILE"
+

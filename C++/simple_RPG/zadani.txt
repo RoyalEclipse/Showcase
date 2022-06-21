@@ -1,0 +1,148 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ZADÁNÍ DLE PROGTESTU:
+
+Naprogramujte engine pro grafické RPG
+
+Váš engine:
+
+ze souboru nahraje definici světa (mapu, předměty, příšery, ...)
+umožní vytvořit herní postavu (její atributy a schopnosti) a následnou hru
+implementuje jednoduchý soubojový systém a inventář
+umožňuje ukládat a načítat rozehrané hry
+Engine může fungovat jako real-time hra, či tahová hra.
+
+Jak může vypadat mapa?
+
+# označuje zeď, T označuje truhlu s pokladem, > označuje pozici (směr otočení) hráče.
+
+
+###################
+# T   #      #    #
+#           ###   #
+#     ##   #      #
+#     #       # > #
+###################
+Kde lze využít polymorfismus? (doporučené)
+
+Soubojové vlastnosti: postava, příšera, stroj (např. past, bomba,...)
+Efekty akcí: souboje, události (pád ze stromu,...), přechod do jiné místnosti
+Inventář: postava, batoh, toulec, kapsa
+Uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty), ...
+Ukázky:
+
+https://en.wikipedia.org/wiki/Hack_(video_game)
+https://www.mobygames.com/game/heroes-of-might-and-magic
+http://www.drd2.cz/
+Dungeons & Dragons
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SPECIFICKÉ ZADÁNÍ:
+
+Nejdřív se podíváme jak bude vypadat mapa. Bude se jednat o obdélníkové místnosti o různých velikostech, které budou propojeny mezi sebou průchody,
+zasazenými cca uprostřed stěny. Pro představu podobně jako například ve hře The Binding of Isaac. Následuje příklad místnosti.
+
+##########-#########
+#                  #
+# o #     > ...  o #
+#   #     #        |
+#   #        #     #
+#     @            #
+##########-#########
+
+klíč věcí na obrazovce:
+
+-hráč a jeho směr kterým se dívá/útočí = v/^/</>
+-nepřítel = o/@
+- zeď nebo jiná překážka = #
+- dveře do další místnosti = -/|
+- projektil od hráče = .
+
+Mapa bude uložena v nějákém formátu v textovém souboru, tento soubour bude obsahovat i definice monster s jejich atributy
+
+Před začátkem nové hry si hráč vybere specializaci své postavy, pravděpodobně bude mít na výběr mezi třemi možnostmi s různým poměrem životů a útoku, popřípadě různými projektily.
+K tomu bude na začátku jednoduché menu, kde si může hráč načíst uloženou hru.
+
+Souboj bude probíhat ve formě střelby projektilů od hráče.
+
+Nepřátel bude potencionálně víc typů, alespoň dva nebo tři, budou se lišit způsobem jakým se pohybují, útočí a znakem co je reprezentuje.
+Hráč bude mít omezené množství životů, každý útok od nepřitele co ho trefí mu jeden život ubere. Dveře do dalších místnosí se neotevřou dokud
+hráč nezlikviduje všechny nepřátele v místnosi. Nepřátelé mohou fungovat například tak že nepřítel "o" se bude pohybovat poměrně rychle ale předvídatelně
+a bude se jen pohybovat ve dvou směrech a vždy když narazí na nějákou překážku tak se "odrazí" zpátky, nepřítel "@" může zase hráče o něco pomaleji
+pronásledovat po mapě. Cílem hry bude projít několik místnosí s pár nepřáteli a porazit finálního nepřítele/vlnu menších nepřátel, design nechám na budoucím já.
+NCurses zároveň umožňuje zvýraznit nějáké znaky, takže útoky finálního nepřítele mohou být "telegraphed" a zvýraznit políčka která zasáhnou krátce
+předtím než způsobí poškození všem co na nich stojí.
+
+Souboj bude probíhat real time, hráč bude mít k dispozici nějákou zbraň na dálku, ještě se uvidí jestli zbraně budou hitscan nebo projektilové, potencionálně jedno nebo druhé podle výběru
+specializace na začátku hry.
+
+Po zlikvidování všech něpřátel v místnosti hráč dostane nějákou odměnu, pravděpodobně nějáký předmět co bude modifikovat jeho životy nebo poškození (brnění, lektvar či nový luk),
+implemetuji i lepší a koplexnější bonusy, bude-li čas. Rovněž může hráč narazit na místnost která obsahuje jen nějáký předmět.
+Tyto předměty bude mít hráč v inventáři, bude možné je využít kdykoliv se hráč rozhodne a budou pravděpodobně náhodně generované.
+
+Mapa se bude vykreslovat za pomocí velikosti místnosi udané v CRoom, která bude určovat rozsah VNITŘNÍCH rozměrů místnosti,
+kolem tohoto obdélníku se vytvoří stěna a dveře uprostřed těch stěn, dále je v CRoom stl které obsahuje pozice všech věcí v místnosti,
+v hlavním gameloopu se bude na všechny tyto objekty volat metoda move, a při kontaktu dvou objektů i metoda change health atp.
+metody move budou ovládané buď hráčem nebo přes jednoduché AI. při zabití všech nepřátel se otevřou dveře dál a po interakci s nimi
+hráč přejde do další místnosti, kde se celý cyklus opakuje. Budu ještě potřebovat určitě pár metoda a tříd, ale zatím si nejsem jistý jejich
+rozhraním ani implementací, to všechno přijde až budu mít konkrétněji sepsaný game loop.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NÁVRH TŘÍD:
+
+-CGame = hlavní parent class co bude ovládat game loop.
+-CMenu = třída voláná z gameloop na samém začátku, obsahuje výběr mezi novou hrou nebo načtením ze souboru.
+ 
+-CMap = mapa momentální úrovně, ovládá přechody mezi místnostmi a obsahuje stl všech CRoom v dané úrovni.
+-CRoom = místnost obsahující stl se všemi actory
+
+-CActor = parent class pro všechny entity na obrazovce, bude obsahovat jejich pozici a životy
+	-CActorObstacle = nezničitelná a nepohyblivá překážka
+	-CActorProjectile = projektil od hráče, potencionálně od nějákého typu nepřitele
+	-CActorEnemySlime = zmíněný nepřítel "o"
+	-CActorEnemyZombie = zmíněný nepřitel "@"
+	-CActorPlayer = avatar hráče
+		-CActorPlayerInventory = inventář věcí co hráč vlastní, stará se o přidání bonusů a popřípadě o využití předmětů
+	-CItem = informace o tom co mění item po použití ve formě několika intů
+
+OBSAH TŘÍD:
+
+CGame: GameState, room number, metoda loadNextRoom, loadEntity atp
+	CMenu: obsluhuje menu, různé metody pro vykreslování menu načítání a ukládání.
+
+CMap: metoda pro přesun mezi místnostmi, pozice hráče na mapě, metody pro vykresleni místnosti, možná i celkové mapy,
+otevření dveří v místnosti a překreslení jejího obsahu.
+
+CRoom: velikost místnosti a booly určující kde má mít dveře, stl s actory co v ní jsou
+
+CActor: životy, poškození, movementSpeed, virtuální metody move, attack, change damage/health/speed
+	CActorPlayer: metoda use, metody move a attack dle inputu, metoda kill která zabije hráče a ukončí hru
+	CActorPlayerInventory: metoda pro použití předmětu z inventáře, nebo přidání nového předmětu.
+	CActorObstacle: metoda move, která nedělá nic, metoda take damage která nebude dělat nic
+	CActorSlime: metoda move, jiná než ostatní nepřátelé, metoda attack která poškodí cokoliv do čeho narazí
+	CActorZombie: stejné metody jako slime, jinak implementované
+	CActorItem: placeholder pro předmět který lze sebrat ze země
+
+VYUŽITÍ POLYMORFISMU:
+
+Polymorfismus mi velmi pomůže a bude klíčový při implementaci třídy CActor a všech jejích potomků, bude využit primárně na ukládání různých tipů nepřátel s jejich pozicemi a 
+také pro volání metod na poškození či pohyb a bude tvořit jádro mé implementace.
+CMenu bude potomek CGame, aby mohlo rovnou volat metody pro načítání atp.
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

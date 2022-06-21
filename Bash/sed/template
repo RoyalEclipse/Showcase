@@ -1,0 +1,66 @@
+#!/bin/bash
+
+CURROOT=$( pwd )
+TEMPFILE=$( mktemp )
+
+
+cleanup()
+{
+    rm "$TEMPFILE"
+}
+
+trap cleanup exit
+
+####################### creation of the data files from data.txt ##########################
+mkdir templatefiles
+
+while read -r line; do
+
+
+    CODE=$( echo "$line" | cut -d':' -f1 )
+
+    # only real subjects
+    if [[ ! "$CODE" =~ ^.I-[^.]+$ ]];
+    then
+        continue
+    fi
+
+    CODENODASH=$( echo "$CODE" | sed -E 's/-//g' )
+    REALNAME=$( echo "$line" | cut -d':' -f2 )
+
+    cd templatefiles || exit
+
+    touch "$CODE.data"
+
+    echo "# Kód předmětu včetně pomlčky" > "$CODE.data"
+    echo "COURSE-CODE:" >> "$CODE.data"
+    echo -e "\t$CODE" >> "$CODE.data"
+    echo "" >> "$CODE.data"
+
+    echo "# Kód předmětu bez pomlčky" >> "$CODE.data"
+    echo "COURSECODE:" >> "$CODE.data"
+    echo -e "\t$CODENODASH" >> "$CODE.data"
+    echo "" >> "$CODE.data"
+
+    echo "# Název předmětu" >> "$CODE.data"
+    echo "COURSE-NAME:" >> "$CODE.data"
+    echo -e "\t$REALNAME" >> "$CODE.data"
+    echo "" >> "$CODE.data"
+
+    cd .. || exit
+
+done < data.txt
+
+####################### creation of the local.php and local.protected.course.php ##########################
+
+cd templatefiles || exit
+mkdir phpfiles
+
+for file in *.data;
+do
+    filename=$( echo $file | sed -E 's/(.*)\.data/\1/' )
+    mkdir "./phpfiles/$filename"
+    sed -Enf "../generator" "$file" > "$TEMPFILE"
+    sed -f "$TEMPFILE" "../local.protected.course.php" > "./phpfiles/$filename/local.protected.course.php"
+    sed -f "$TEMPFILE" "../local.php" > "./phpfiles/$filename/local.php"
+done

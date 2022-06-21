@@ -1,0 +1,53 @@
+#!/usr/bin/env -S awk -f
+
+BEGIN{
+    # im using preprocessed data through a series of seds, the page is static anyways
+    FS=",";
+    OFS="";
+
+    # creates all of the folders
+    pathToOutput="./students-output";
+    split( "abcdefghijklmnopqrstuvwxyz", alphabet, "" );
+    for( i in alphabet )
+    {
+        system("mkdir -p " pathToOutput "/" alphabet[i]);
+    }
+
+    for( i in alphabet )
+    {
+        system("touch " pathToOutput "/" alphabet[i] ".list" );
+    }
+
+}
+
+{
+    # splits the line into the parts we need
+    name=$2;
+
+    match($3, /^([[:digit:]]+)\/[[:digit:]]+$/, arrclass)
+    class=arrclass[1];
+    
+    match($3, /^[[:digit:]]+\/([[:digit:]]+)$/, arrgroup)
+    group=arrgroup[1];
+    
+    email=$4;
+    
+    match($4, /^(.*)@.*$/, arrusername);
+    username=arrusername[1];
+
+    # for output
+    firstLetter = substr(username, 1, 1);
+
+    # adds current line to list
+    print username, ":", name >> pathToOutput "/" firstLetter ".list";
+
+    # creates the .class file
+    system("touch " pathToOutput "/" firstLetter "/" username ".class" );
+
+    # fills out the .class file
+    print "USERNAME=",  username > pathToOutput "/" firstLetter "/" username ".class";
+    print "EMAIL=",     email   >> pathToOutput "/" firstLetter "/" username ".class";
+    print "REALNAME=",  name    >> pathToOutput "/" firstLetter "/" username ".class";
+    print "GRADE=",     class   >> pathToOutput "/" firstLetter "/" username ".class";
+    print "GROUP=",     group   >> pathToOutput "/" firstLetter "/" username ".class";
+}

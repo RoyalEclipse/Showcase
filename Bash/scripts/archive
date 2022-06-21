@@ -1,0 +1,98 @@
+#!/bin/bash
+
+CURROOT=$( pwd )
+
+# tests for the presenco of the coursesFolder directory
+if [ -d "./coursesFolder/" ]
+then
+	echo '@coursesFolder found'
+else
+	echo '@please place the script in the same directory as the coursesFolder directory'
+	exit
+fi
+
+
+# makes archiveFolder if needed
+if [ -d "archiveFolder" ]
+then
+	echo '@archiveFolder folder found'
+else
+	echo '@creating folder archiveFolder'
+	mkdir archiveFolder
+fi
+
+
+# creates a name and timestamp for the archived semester
+cd coursesFolder
+CURSEMESTER=$( cat info )
+TIMESTAMP=$( date '+%Y-%m-%d_%H:%M:%S' )
+DIRNAME=$( echo "$CURSEMESTER--$TIMESTAMP" )
+cd $CURROOT
+
+
+# creates the timestamped folder and link
+echo '@creating directory for current semester'
+cd archiveFolder
+mkdir "$DIRNAME"
+ln -s -T "$DIRNAME" "$CURSEMESTER"
+cd "$CURROOT"
+
+
+# actual archivation
+echo '@transferring data...'
+cp -r "./coursesFolder/." "./archiveFolder/$DIRNAME/"
+
+
+########################
+cd "archiveFolder/$DIRNAME/"
+########################
+
+
+# reads all paths to index line by line and edits the contents
+echo '@editing headers to include timestamp'
+
+find . -name "index" > pathstoindex.txt
+
+while read line; do
+
+	CODE=$( cat "$line" | cut -d' ' -f2)
+	echo "===== $CODE zaloha z $TIMESTAMP =====" > "$line"
+	
+done < pathstoindex.txt
+
+cd "$CURROOT"
+
+
+# creates a list of all subbject codes used
+echo '@creating a list of codes'
+cat "./archiveFolder/$DIRNAME/pathstoindex.txt" | rev | cut -d'/' -f2 | rev > codes.txt
+
+# finds all the subject folders from all semesters
+echo '@linking subjects by semester'
+INCREMENTER=1
+while read -r code; do
+	find "$CURROOT/archiveFolder/" -name "$code" > pathsselective.txt
+	mkdir "./archiveFolder/$code-backup"
+	cd "./archiveFolder/$code-backup"
+	
+		while read -r path; do
+		
+		ln -s -T "$CURROOT/archiveFolder/$path" "$( echo "$line@$CURSEMESTER$INCREMENTER" )"
+		INCREMENTER=$(( INCREMENTER + 1 ))
+
+		done < "$CURROOT/pathsselective.txt"
+			
+	INCREMENTER=0
+	cd "$CURROOT"
+	
+done < codes.txt
+
+# cleanup
+echo '@cleaning up'
+cd "$CURROOT"
+rm codes.txt
+rm ./archiveFolder/$DIRNAME/pathstoindex.txt
+rm pathsselective.txt
+
+echo '@archiving complete'
+

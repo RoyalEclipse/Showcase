@@ -1,0 +1,117 @@
+#!/bin/bash
+CURROOT=$( pwd )
+
+# prints help text if -h or an incorrect parameter was used
+Help()
+{
+    echo "Thank you for using the Umbrella Corp Personas Image Downloader!"
+    echo "OPTIONS"
+    echo "-h Shows you this text!"
+    echo "-u [URL] lets you specify your own url, the default one is:"
+    echo "https://addons.mozilla.org/cs/firefox/search/?sort=rating&type=statictheme"
+    echo "-r removes all created files after completion"
+    echo "-v calls 'ls' after each page download to show what was downloaded"
+    echo "-p [number] sets the maximum amount of pages to scrape"
+    echo "Thats it, have fun!"
+    exit
+}
+
+# calls rm -r if -r was used
+Cleanup()
+{
+    if [ $REMOVE -eq 1 ];
+    then
+    cd "$CURROOT"
+    rm -r ./imagesfrompersonas
+    fi
+}
+
+# calls ls if -v was used
+Verbose()
+{
+    if [ $VERB -eq 1 ];
+    then
+    ls
+    fi
+}
+
+FLAG=0
+REMOVE=0
+VERB=0
+MAXPAGE=100
+PREFIX="https://addons.mozilla.org/"
+
+# loading of options
+while getopts "vrhu:p:" option; do
+   case $option in
+        u) URL="${OPTARG}";;
+        r) REMOVE=1;;
+        v) VERB=1;;
+        p) MAXPAGE="${OPTARG}";;
+        h) Help;;
+        ?) Help;;
+
+   esac
+done
+
+# creates the directory for storing the images
+if [ -d "imagesfrompersonas" ];
+then
+echo "Images file found."
+else
+echo "Creating image file in current directory."
+mkdir ./imagesfrompersonas
+fi
+cd imagesfrompersonas
+
+# starts the cleanup function before exiting
+trap Cleanup EXIT
+
+# sets the url to the one given or to the basic one
+if [ "$URL" ];
+then
+echo "using your URL"
+else
+echo "using default URL"
+URL="https://addons.mozilla.org/cs/firefox/search/?sort=rating&type=statictheme&page=1"
+fi
+PAGENUM=1
+
+while [ $FLAG -eq 0 ]
+do
+
+#grabs the images
+echo "Downloading batch $PAGENUM of $MAXPAGE"
+wget -qO temphtml.txt "$URL"
+HTML=$( cat temphtml.txt )
+rm temphtml.txt
+TEMP=$( echo "$HTML" | sed 's/src=/\n/g' | sed 's/class/\n/g' | grep 'alt\=\"')
+IMGURLS=$( echo "$TEMP" | sed -E 's/\"(.*)\".*\"(.*)\"\//\1;\2/g' | cut -d'>' -f1)
+
+if [ $VERB -eq 1 ];
+then
+echo "$IMGURLS"
+fi
+
+COMMANDS=$( echo "$IMGURLS" | sed -E 's/(.*);(.*)/wget -q -nc -P \.\/imagesfrompersonas\/ -O \"\2\.svg\" "\1"/g' )
+eval "$COMMANDS"
+Verbose
+
+#ending condition
+if [ $PAGENUM -eq $MAXPAGE ];
+then
+FLAG=1
+fi
+
+PAGENUM=$(( PAGENUM + 1))
+
+#sets the url to next in line
+TEMP=$( echo "$URL" | cut -d'=' -f 1,2,3 )
+URL=$( echo "$TEMP=$PAGENUM")
+
+done
+
+# FIXME
+# eval seems to fuck up and expand a bit too much
+
+exit 0

@@ -1,0 +1,113 @@
+#!/bin/bash
+
+CURROOT=$( pwd )
+TOWAIT=120
+PARSELOG=0
+REMOVEALL=0
+TEMPFILE=$( mktemp )
+trap cleanup EXIT
+
+cleanup(){
+    if [ $REMOVEALL -eq 1 ]
+    then
+    cd "$CURROOT" || return 
+    rm download.log
+    fi
+
+    rm "$TEMPFILE"
+}
+
+help(){
+    echo "Thank you for using the Umbrella Corp download counter Program!"
+    echo "This script will count downloaded and uploaded bytes from this machine"
+    echo "OPTIONS"
+    echo "-h Shows you this text!"
+    echo "-r Removes the resulting file structure and all generated files."
+    echo "-t N Sets the timer for the periodic check of your /proc/net/dev file, set to 2 minutes by default, N is a number of seconds to wait."
+    echo "-l if used the script will look for a download.log file in the current directory and attempt to parse it."
+    echo "This script will run until the rest of eternity, unless canceled by the user using ctrl+c"
+    echo "Thats it, have fun!"
+    exit
+}
+
+# loading of options
+while getopts "t:hrl" option; do
+   case $option in
+        t) TOWAIT=${OPTARG};;
+        h) help;;
+        r) REMOVEALL=1;;
+        l) PARSELOG=1;;
+        ?) help;;
+   esac
+done
+
+
+if [ $PARSELOG -eq 0 ]
+then
+
+    echo "use ctrl+c to end this script."
+    CHECKCOUNTER=0
+    while true
+    do
+
+        cat "/proc/net/dev" > "$TEMPFILE"
+        awk '$1=="eth0" {print $2," ", $10}' "$TEMPFILE" >> download.log
+        CHECKCOUNTER=$(( CHECKCOUNTER + 1 ))
+        echo "checking, cycle no. $CHECKCOUNTER"
+        
+        sleep "$TOWAIT"
+    
+    done
+    
+else
+
+    if [ -f download.log ]
+    then
+        echo "download.log found."
+    else
+        echo "download.log not found, displaying help"
+        help
+        exit 
+    fi
+
+    cat "/proc/net/dev" > "$TEMPFILE"
+    DOWNLOADSUM=0
+    DOWNLOADSUM=$( awk '$1=="eth0" {print $2}' "$TEMPFILE" )
+    TEMPSUM=$(
+        awk 'BEGIN{max=sum=0}
+        {
+            if($1>max){
+                max=$1
+            }
+            else{
+                sum=sum+max
+                max=0
+            }
+        }
+        END{sum=sum+max; print sum}
+        ' "download.log"
+    )
+    DOWNLOADSUM=$(( DOWNLOADSUM + TEMPSUM ))
+
+    UPLOADSUM=0
+    UPLOADSUM=$( awk '$1=="eth0" {print $10}' "$TEMPFILE" )
+    TEMPSUM=$(
+        awk 'BEGIN{max=sum=0}
+        {
+            if($2>max){
+                max=$2
+            }
+            else{
+                sum=sum+max
+                max=0
+            }
+        }
+        END{sum=sum+max; print sum}
+        ' download.log
+    )
+    UPLOADSUM=$(( UPLOADSUM + TEMPSUM ))
+
+    echo "sum of downloaded bytes from log file and current state is: $DOWNLOADSUM"
+    echo "sum of downloaded bytes from log file and current state is: $UPLOADSUM"
+
+fi

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]
+then
+    echo "wrong number of inputs."
+    exit 1
+fi
+
+if [[ $1 == *$'\n'* ]];
+then
+    echo "dont name your files with a newline in the middle dude"
+    exit 1
+fi
+
+expression=$( echo "\./$1\_[0-9]+" )
+LINES=$( find '.' -type f -regextype posix-extended -regex "$expression" )
+NUMBERS=$( echo "$LINES" | rev | cut -d'_' -f1 | rev )
+echo "$NUMBERS" | sort -n | tail -1

@@ -1,0 +1,671 @@
+==21350== Memcheck, a memory error detector
+==21350== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==21350== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==21350== Command: ./novot118
+==21350== 
+--21350-- Valgrind options:
+--21350--    --leak-check=full
+--21350--    --show-leak-kinds=all
+--21350--    --track-origins=yes
+--21350--    --verbose
+--21350-- Contents of /proc/version:
+--21350--   Linux version 5.13.0-44-generic (buildd@lcy02-amd64-107) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #49~20.04.1-Ubuntu SMP Wed May 18 18:44:28 UTC 2022
+--21350-- 
+--21350-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--21350-- Page sizes: currently 4096, max supported 4096
+--21350-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--21350-- Reading syms from /home/matej/semesters/second/pa2/novot118/semestralni_prace/novot118
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--21350--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--21350--   .. build-id is valid
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--21350--    object doesn't have a symbol table
+--21350--    object doesn't have a dynamic symbol table
+--21350-- Scheduler: using generic scheduler lock implementation.
+--21350-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==21350== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-21350-by-matej-on-???
+==21350== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-21350-by-matej-on-???
+==21350== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-21350-by-matej-on-???
+==21350== 
+==21350== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==21350== don't want to do, unless you know exactly what you're doing,
+==21350== or are doing some strange experiment):
+==21350==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=21350 ...command...
+==21350== 
+==21350== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==21350==   /path/to/gdb ./novot118
+==21350== and then give GDB the following command
+==21350==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=21350
+==21350== --pid is optional if only one valgrind process is running
+==21350== 
+--21350-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--21350-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--21350--    object doesn't have a symbol table
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--21350--    object doesn't have a symbol table
+==21350== WARNING: new redirection conflicts with existing -- ignoring it
+--21350--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--21350--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--21350-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--21350-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libncurses.so.6.2
+--21350--    object doesn't have a symbol table
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+--21350--    object doesn't have a symbol table
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--21350--    object doesn't have a symbol table
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--21350--    object doesn't have a symbol table
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--21350--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--21350--   .. build-id is valid
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--21350--   Considering /usr/lib/debug/.build-id/c0/f40155b3f8bf8c494fa800f9ab197ebe20ed6e.debug ..
+--21350--   .. build-id is valid
+--21350-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--21350--   Considering /usr/lib/debug/.build-id/fe/91b4090ea04c1559ff71dd9290062776618891.debug ..
+--21350--   .. build-id is valid
+--21350-- REDIR: 0x4b5e480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e7b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d0a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d7e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5fc50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7ace0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7a820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e5e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7a7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d1d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7bf50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7a860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b66bb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e3d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b7a930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5dae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e6f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5fc90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e8a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5d6b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4beb850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4b5e2f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--21350-- REDIR: 0x4c46500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--21350-- REDIR: 0x4b580e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--21350-- REDIR: 0x4c466d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--21350-- REDIR: 0x4c42cc0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--21350-- REDIR: 0x4c41bd0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--21350-- REDIR: 0x4c42010 (libc.so.6:__strncmp_avx2) redirected to 0x483f670 (strncmp)
+--21350-- REDIR: 0x4c496e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--21350-- REDIR: 0x4b59b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--21350-- REDIR: 0x4c46310 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--21350-- REDIR: 0x4c46870 (libc.so.6:__strnlen_avx2) redirected to 0x483eee0 (strnlen)
+--21350-- REDIR: 0x4c460e0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+--21350-- REDIR: 0x4b586d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--21350-- REDIR: 0x4c47c10 (libc.so.6:__strcpy_avx2) redirected to 0x483f090 (strcpy)
+--21350-- REDIR: 0x4b5dfa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--21350-- REDIR: 0x4c496d0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4843b10 (__memcpy_chk)
+--21350-- REDIR: 0x4b58e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--21350-- REDIR: 0x4c47fa0 (libc.so.6:__strncpy_avx2) redirected to 0x483f230 (strncpy)
+--21350-- REDIR: 0x4b793f0 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x4843c20 (strstr)
+--21350-- REDIR: 0x496bb20 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--21350-- REDIR: 0x4c49b60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--21350-- REDIR: 0x496bb80 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--21350-- REDIR: 0x4969da0 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
+--21350-- REDIR: 0x4c42530 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--21350-- REDIR: 0x4969d70 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
+==21350== 
+==21350== HEAP SUMMARY:
+==21350==     in use at exit: 81,002 bytes in 557 blocks
+==21350==   total heap usage: 1,909 allocs, 1,352 frees, 224,867 bytes allocated
+==21350== 
+==21350== Searching for pointers to 557 not-freed blocks
+==21350== Checked 215,104 bytes
+==21350== 
+==21350== 4 bytes in 1 blocks are still reachable in loss record 1 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487E3D1: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 12 bytes in 1 blocks are still reachable in loss record 2 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4B5D38E: strdup (strdup.c:42)
+==21350==    by 0x48A1AA7: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A1D9B: _nc_first_db (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE1E: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350== 
+==21350== 15 bytes in 1 blocks are still reachable in loss record 3 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4B5D38E: strdup (strdup.c:42)
+==21350==    by 0x48A4E4F: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 24 bytes in 1 blocks are still reachable in loss record 4 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A268C: _nc_home_terminfo (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A1D85: _nc_first_db (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE1E: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 46 bytes in 1 blocks are still reachable in loss record 5 of 48
+==21350==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A22C7: _nc_doalloc (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB504: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350== 
+==21350== 46 bytes in 1 blocks are still reachable in loss record 6 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A018E: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E1B: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 48 bytes in 1 blocks are still reachable in loss record 7 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A1E9B: _nc_first_db (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE1E: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 64 bytes in 1 blocks are still reachable in loss record 8 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10DB31: CGame::startGame() (CGame.cpp:21)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 66 bytes in 1 blocks are still reachable in loss record 9 of 48
+==21350==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A22C7: _nc_doalloc (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A7C83: tparm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A1B5: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AB8C: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 72 bytes in 1 blocks are still reachable in loss record 10 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10FC20: CGame::parseActor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:397)
+==21350==    by 0x10E346: CGame::loadGame(bool) (CGame.cpp:170)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 78 bytes in 1 blocks are still reachable in loss record 11 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A01FF: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E1B: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 93 bytes in 1 blocks are still reachable in loss record 12 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A1E04: _nc_first_db (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE1E: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 104 bytes in 1 blocks are still reachable in loss record 13 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B095: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E798: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 104 bytes in 1 blocks are still reachable in loss record 14 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B095: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E7BD: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 104 bytes in 1 blocks are still reachable in loss record 15 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B095: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E95B: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 104 bytes in 1 blocks are still reachable in loss record 16 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B095: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10DC95: CGame::startGame() (CGame.cpp:55)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 112 bytes in 1 blocks are still reachable in loss record 17 of 48
+==21350==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A22C7: _nc_doalloc (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A6542: _nc_tparm_analyze (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A67CB: tparm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48809F2: vidputs_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4883AB9: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x488449B: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4884F25: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4885F3C: doupdate_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C4E7: wrefresh (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4875E79: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4876B8A: wgetch (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350== 
+==21350== 120 bytes in 1 blocks are still reachable in loss record 18 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x486FFC8: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48861DF: doupdate_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C4E7: wrefresh (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4875E79: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4876B8A: wgetch (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10D49C: CMenu::newGameScreen() (CMenu.cpp:142)
+==21350==    by 0x10DBCE: CGame::startGame() (CGame.cpp:39)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 128 bytes in 1 blocks are still reachable in loss record 19 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487E39E: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 156 bytes in 1 blocks are still reachable in loss record 20 of 48
+==21350==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A22C7: _nc_doalloc (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB522: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350== 
+==21350== 240 bytes in 1 blocks are still reachable in loss record 21 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4870AFD: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x486FF28: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48861DF: doupdate_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C4E7: wrefresh (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4875E79: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4876B8A: wgetch (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10D49C: CMenu::newGameScreen() (CMenu.cpp:142)
+==21350==    by 0x10DBCE: CGame::startGame() (CGame.cpp:39)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 240 bytes in 1 blocks are still reachable in loss record 22 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4870BFF: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x486FF28: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48861DF: doupdate_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C4E7: wrefresh (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4875E79: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4876B8A: wgetch (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10D49C: CMenu::newGameScreen() (CMenu.cpp:142)
+==21350==    by 0x10DBCE: CGame::startGame() (CGame.cpp:39)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 280 bytes in 1 blocks are still reachable in loss record 23 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A4DB7: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 320 bytes in 1 blocks are still reachable in loss record 24 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48872A9: wresize (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x115B98: CMap::renderRoom(_win_st*, CRoom*) (CMap.cpp:19)
+==21350==    by 0x10DFDB: CGame::startGame() (CGame.cpp:106)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 360 bytes in 9 blocks are still reachable in loss record 25 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10F4FC: CGame::parseRoom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:315)
+==21350==    by 0x10E32B: CGame::loadGame(bool) (CGame.cpp:168)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 432 bytes in 9 blocks are still reachable in loss record 26 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x115182: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::pair<int, int> const, CRoom*> > >::allocate(unsigned long, void const*) (new_allocator.h:114)
+==21350==    by 0x114C68: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<std::pair<int, int> const, CRoom*> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<std::pair<int, int> const, CRoom*> > >&, unsigned long) (alloc_traits.h:443)
+==21350==    by 0x114272: std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, CRoom*>, std::_Select1st<std::pair<std::pair<int, int> const, CRoom*> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, CRoom*> > >::_M_get_node() (stl_tree.h:580)
+==21350==    by 0x1134F2: std::_Rb_tree_node<std::pair<std::pair<int, int> const, CRoom*> >* std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, CRoom*>, std::_Select1st<std::pair<std::pair<int, int> const, CRoom*> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, CRoom*> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<std::pair<int, int> const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<std::pair<int, int> const&>&&, std::tuple<>&&) (stl_tree.h:630)
+==21350==    by 0x1123AA: std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, CRoom*> > std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, CRoom*>, std::_Select1st<std::pair<std::pair<int, int> const, CRoom*> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, CRoom*> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<std::pair<int, int> const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, CRoom*> >, std::piecewise_construct_t const&, std::tuple<std::pair<int, int> const&>&&, std::tuple<>&&) (stl_tree.h:2460)
+==21350==    by 0x11120B: std::map<std::pair<int, int>, CRoom*, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, CRoom*> > >::operator[](std::pair<int, int> const&) (stl_map.h:499)
+==21350==    by 0x10F588: CGame::parseRoom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:318)
+==21350==    by 0x10E32B: CGame::loadGame(bool) (CGame.cpp:168)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 480 bytes in 1 blocks are still reachable in loss record 27 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B0B3: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E798: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 480 bytes in 1 blocks are still reachable in loss record 28 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B0B3: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E7BD: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 480 bytes in 1 blocks are still reachable in loss record 29 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B0B3: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487B278: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E95B: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 496 bytes in 1 blocks are still reachable in loss record 30 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48AB78B: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350== 
+==21350== 496 bytes in 1 blocks are still reachable in loss record 31 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A02D9: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E1B: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 512 bytes in 1 blocks are still reachable in loss record 32 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487E37F: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 576 bytes in 12 blocks are still reachable in loss record 33 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10FAEB: CGame::parseActor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:386)
+==21350==    by 0x10E346: CGame::loadGame(bool) (CGame.cpp:170)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 755 bytes in 1 blocks are still reachable in loss record 34 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48AB80B: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350== 
+==21350== 1,296 bytes in 27 blocks are still reachable in loss record 35 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10FA93: CGame::parseActor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:383)
+==21350==    by 0x10E346: CGame::loadGame(bool) (CGame.cpp:170)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 1,488 bytes in 1 blocks are still reachable in loss record 36 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4870AC2: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x486FF28: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48861DF: doupdate_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C4E7: wrefresh (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4875E79: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x4876B8A: wgetch (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10D49C: CMenu::newGameScreen() (CMenu.cpp:142)
+==21350==    by 0x10DBCE: CGame::startGame() (CGame.cpp:39)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 1,556 bytes in 1 blocks are still reachable in loss record 37 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48AAE82: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350== 
+==21350== 1,624 bytes in 1 blocks are still reachable in loss record 38 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A524E: new_prescr (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487AE4B: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 2,431 bytes in 1 blocks are still reachable in loss record 39 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4881A39: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487BE04: vwprintw (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487C159: mvwprintw (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10D239: CMenu::printOptions() (CMenu.cpp:94)
+==21350==    by 0x10D046: CMenu::highlight(int) (CMenu.cpp:42)
+==21350==    by 0x10CF53: CMenu::CMenu() (CMenu.cpp:16)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 2,752 bytes in 1 blocks are still reachable in loss record 40 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487E49F: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 3,760 bytes in 9 blocks are still reachable in loss record 41 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x1149C9: __gnu_cxx::new_allocator<CActor*>::allocate(unsigned long, void const*) (new_allocator.h:114)
+==21350==    by 0x113F6F: std::allocator_traits<std::allocator<CActor*> >::allocate(std::allocator<CActor*>&, unsigned long) (alloc_traits.h:443)
+==21350==    by 0x112E95: std::_Vector_base<CActor*, std::allocator<CActor*> >::_M_allocate(unsigned long) (stl_vector.h:343)
+==21350==    by 0x1128EE: void std::vector<CActor*, std::allocator<CActor*> >::_M_realloc_insert<CActor*&>(__gnu_cxx::__normal_iterator<CActor**, std::vector<CActor*, std::allocator<CActor*> > >, CActor*&) (vector.tcc:440)
+==21350==    by 0x1113AD: void std::vector<CActor*, std::allocator<CActor*> >::emplace_back<CActor*&>(CActor*&) (vector.tcc:121)
+==21350==    by 0x10FD0A: CGame::parseActor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:410)
+==21350==    by 0x10E346: CGame::loadGame(bool) (CGame.cpp:170)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 3,792 bytes in 1 blocks are still reachable in loss record 42 of 48
+==21350==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A22C7: _nc_doalloc (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB540: _nc_read_termtype (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48AB91C: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABD13: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48ABE44: _nc_read_entry2 (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A49F5: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E04: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350== 
+==21350== 3,792 bytes in 1 blocks are still reachable in loss record 43 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x48A01AF: ??? (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x48A4E1B: _nc_setupterm (in /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2)
+==21350==    by 0x487A9AC: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 5,600 bytes in 20 blocks are still reachable in loss record 44 of 48
+==21350==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x4887462: wresize (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x115B98: CMap::renderRoom(_win_st*, CRoom*) (CMap.cpp:19)
+==21350==    by 0x10DFDB: CGame::startGame() (CGame.cpp:106)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== 9,600 bytes in 30 blocks are still reachable in loss record 45 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B2AC: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E798: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 9,600 bytes in 30 blocks are still reachable in loss record 46 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B2AC: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E7BD: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 9,600 bytes in 30 blocks are still reachable in loss record 47 of 48
+==21350==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x487B2AC: newwin_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487E95B: ??? (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487A9EF: newterm_sp (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x487AE5C: newterm (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x48772CF: initscr (in /usr/lib/x86_64-linux-gnu/libncurses.so.6.2)
+==21350==    by 0x10CE46: CMenu::CMenu() (CMenu.cpp:5)
+==21350==    by 0x10DAD3: CGame::CGame() (CGame.cpp:11)
+==21350==    by 0x10CD70: main (main.cpp:5)
+==21350== 
+==21350== 16,464 bytes in 343 blocks are still reachable in loss record 48 of 48
+==21350==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==21350==    by 0x10FB32: CGame::parseActor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (CGame.cpp:389)
+==21350==    by 0x10E346: CGame::loadGame(bool) (CGame.cpp:170)
+==21350==    by 0x10DBDF: CGame::startGame() (CGame.cpp:40)
+==21350==    by 0x10CD7C: main (main.cpp:6)
+==21350== 
+==21350== LEAK SUMMARY:
+==21350==    definitely lost: 0 bytes in 0 blocks
+==21350==    indirectly lost: 0 bytes in 0 blocks
+==21350==      possibly lost: 0 bytes in 0 blocks
+==21350==    still reachable: 81,002 bytes in 557 blocks
+==21350==         suppressed: 0 bytes in 0 blocks
+==21350== 
+==21350== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

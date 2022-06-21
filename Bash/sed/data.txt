@@ -1,0 +1,414 @@
+BI-3DT.1:3D Tisk
+PI-AWR.1:Academic Writing
+BI-ADU.1:Administrace OS Unix
+BIK-ADU.1:Administrace OS Unix
+BI-ADW.1:Administrace OS Windows
+BIK-ADW.1:Administrace OS Windows
+NIE-KRY:Advanced Cryptology
+MIE-PDB.16:Advanced Database Systems
+NIE-PIS:Advanced Information Systems
+PI-APA:Advanced Program Analysis
+BI-ALO:Algebra a logika
+BIE-AG1:Algorithms and Graphs 1
+BIE-AG2:Algorithms and Graphs 2
+NIE-AIB:Algorithms of Information Security
+NI-ATH:Algoritmická teorie her
+PI-ADH:Algoritmy a datové struktury pro HPC
+BIK-AG1:Algoritmy a grafy 1
+BI-AG1:Algoritmy a grafy 1
+BI-AG2:Algoritmy a grafy 2
+NI-ADM:Algoritmy data miningu
+NI-AIB:Algoritmy informační bezpečnosti
+PI-AKD:Algoritmy komprese dat
+BI-AVI.21:Algoritmy vizuálně
+PI-AVG:Algoritmy výpočetní genomiky
+BI-A2Z:Anglický jazyk 2-1
+BI-A2L:Anglický jazyk, příprava na zkoušku na úrovni B2
+PI-ANM:Aplikovaná numerická matematika
+NI-AFP:Aplikované funkcionální programování
+PI-ARB:Arbologie
+NIE-ADP:Architecture and Design patterns
+BIE-APS.1:Architectures of Computer Systems
+NI-ADP:Architektonické a návrhové vzory
+NI-AM1:Architektura middleware 1
+NI-AM2:Architektura middleware 2
+NI-APH:Architektura počítačových her
+PI-ASP:Architektura symbolických počítačů
+BIK-APS.1:Architektury počítačových systémů
+BI-APS.1:Architektury počítačových systémů
+BIE-ZUM:Artificial Intelligence Fundamentals
+BIE-AAG:Automata and Grammars
+MIE-AVY:Automata in Text Pattern Matching
+BI-AAG:Automaty a gramatiky
+BIK-AAG:Automaty a gramatiky
+MI-AVY:Automaty ve vyhledávání v textech
+BIE-ZRS:Basics of System Control
+NI-BML:Bayesovské metody ve strojovém učení
+NI-BPS:Bezdrátové počítačové sítě
+BI-BEZ:Bezpečnost
+BIK-BEZ:Bezpečnost
+NI-BVS:Bezpečnost vestavných systémů
+NI-BKO:Bezpečnostní kódy
+BIK-BEK:Bezpečný kód
+BI-BEK:Bezpečný kód
+BI-BLE:Blender
+NIE-BLO:Blockchain
+MIE-GEN:Code Generators
+NIE-KOP:Combinatorial Optimization
+NIE-VYC:Computability
+NIE-MVI:Computational Intelligence Methods
+PI-CFR:Computer Assisted Formal Reasoning
+NIE-SCE1:Computer Engineering Seminar Master I
+NIE-SCE2:Computer Engineering Seminar Master II
+BIE-PSI:Computer Networks
+BIE-PSI.21:Computer Networks
+BIE-SAP.21:Computer Structures and Architectures
+BIE-JPO.21:Computer Units
+BIE-KOM:Conceptual Modelling
+BIE-CZ0:Czech Language for Foreigners
+BIE-CZ1.21:Czech Language for Foreigners II
+UKR-CZ:Czech Language for Ukrainian refugees
+BI-BIG:DB technologie pro Big Data
+BI-DAN:Daně pro neekonomy
+NIE-KOD:Data Compression
+BIE-VZD:Data Mining
+BIE-DBS.21:Database Systems
+BIK-DBS.21:Databázové systémy
+BI-DBS.21:Databázové systémy
+BI-DBS:Databázové systémy
+NI-DSP:Databázové systémy v praxi
+NI-PSD:Design veřejných služeb
+NI-DZO:Digitální zpracování obrazu
+BIE-DML.21:Discrete Mathematics and Logic
+BIK-DML.21:Diskrétní matematika a logika
+BI-DML.21:Diskrétní matematika a logika
+NI-DSV:Distribuované systémy a výpočty
+MIE-DSV.16:Distributed Systems and Computing
+BIE-DPR:Documentation, Presentation, Rhetorics
+BI-DPR:Dokumentace, prezentace, rétorika
+BIK-DPR:Dokumentace, prezentace, rétorika
+NI-DDW:Dolování dat z webu
+BIE-EMP:Economic and management principles
+BIE-EPR:Economic project
+NI-PAM:Efektivni předzpracování a parametrizované algoritmy
+BI-EP1:Efektivní programování 1
+BI-EP2:Efektivní programování 2
+NI-EPC:Efektivní programování v C++
+NI-EVY:Efektivní vyhledávání v textech
+NIE-EPC:Effective C++ programming
+MIE-EVY.16:Efficient Text Pattern Matching
+BIK-EMP:Ekonomické a manažerské principy
+BI-EMP:Ekonomické a manažerské principy
+BIE-ZMA:Elements of Calculus
+BIE-ZDM:Elements of Discrete Mathematics
+BIE-EEC:English external certificate
+BI-EJA:Enterprise java
+NIE-BKO:Error Control Codes
+BI-EHA:Etické hackování
+PI-EXA:Experimentální algoritmika
+AKCE:Fiktivní předmět - Akce mimo rozvrhovanou výuku
+FI-FIL:Filosofie
+BI-FMU:Finanční a manažerské účetnictví
+BI-FTR.1:Finanční trhy
+NIE-FME:Formal Methods and Specifications
+NI-FME:Formální metody a specifikace
+BIE-MIK:Fundamentals of Microeconomics
+NIE-GPU:GPU Architectures and Programming
+NI-GEN:Generování kódu
+NI-GNN:Grafové neuronové sítě
+NI-GAK:Grafy a kombinatorika
+NIE-GAK:Graph theory and combinatorics
+NIE-HWB:Hardware Security
+BIE-HWB:Hardware Security
+BIK-HWB:Hardwarová bezpečnost
+NI-HWB:Hardwarová bezpečnost
+BI-HWB:Hardwarová bezpečnost
+NI-HSC:Hardwarové útoky postranními kanály
+BI-HAM:Hardwarově akcelerované monitorování síťového provozu
+BIK-HMI:Historie matematiky a informatiky
+BI-HMI:Historie matematiky a informatiky
+NI-HMI2:Historie matematiky a informatiky 2
+FI-HTE:Historie techniky a ekonomiky
+MIE-HMI:History of Mathematics and Informatics
+BIE-HMI:History of Mathematics and Informatics
+MIE-IBE:Information Security
+PI-IRT:Information retrieval
+NI-IBE:Informační bezpečnost
+NI-IVS:Inteligentní vestavné systémy
+BI-ARD:Interaktivní aplikace s Arduinem
+NI-IKM:Internet a klasifikační metody
+NI-IOT:Internet of Things
+BI-ICS.18:Introduction to Computer Science
+BI-ICS:Introduction to Computer Science
+BIE-EHD:Introduction to European Economic History
+BIE-TJV:Java Technology
+BI-CS2:Jazyk C# - přístup k datům
+BI-CS3:Jazyk C# - tvorba webových aplikací
+BI-SQL.1:Jazyk SQL, pokročilý
+BI-JPO:Jednotky počítače
+NI-KOP:Kombinatorická optimalizace
+NI-KOD:Komprese dat
+PI-KP:Komunikační protokoly
+BI-KOM:Konceptuální modelování
+BIK-KOM:Konceptuální modelování
+NI-CCC:Kreativní programování
+BI-QAP:Kvantové algoritmy a programování
+BIE-LIN:Linear Algebra
+BIE-LA1.21:Linear Algebra 1
+BIE-LA2.21:Linear Algebra 2
+BIK-LIN:Lineární algebra
+BI-LIN:Lineární algebra
+BIK-LA1.21:Lineární algebra 1
+BI-LA1.21:Lineární algebra 1
+BI-LA2.21:Lineární algebra 2
+NI-LOM:Lineární optimalizace a metody
+BIK-MEK:Makroekonomické souvislosti domácí a světové ekonomiky
+BI-MEK:Makroekonomické souvislosti domácí a světové ekonomiky
+NI-MPX:Manažerská praxe
+NI-MPL:Manažerská psychologie
+BIK-MA1.21:Matematická analýza 1
+BI-MA1.21:Matematická analýza 1
+BIK-MLO:Matematická logika
+BI-MLO:Matematická logika
+NI-MPI:Matematika pro informatiku
+NI-MKY:Matematika pro kryptologii
+BIE-MA1.21:Mathematical Analysis 1
+BIE-MLO:Mathematical Logic
+NIE-MKY:Mathematics for Cryptology
+NIE-MPI:Mathematics for Informatics
+BI-MPP:Metody připojování periferií
+NI-MVI:Metody výpočetní inteligence
+NIE-AM1:Middleware Architectures 1
+NIE-AM2:Middleware Architectures 2
+BI-MIT:Mikrotik technologie
+NI-MEP:Modelování podnikových procesů
+NI-MPJ:Modelování programovacích jazyků
+NIE-MTI:Modern Internet Technologies
+BI-MDF.21:Moderní datové formáty
+NI-MOP:Moderní objektové programování ve Pharo
+NI-MTI:Moderní technologie Internetu
+BI-MVT.21:Moderní vizualizační technologie
+BIK-MGA:Multimediální a grafické aplikace
+BI-MGA:Multimediální a grafické aplikace
+BI-MMP:Multimediální týmový projekt
+NI-NON:Nelineární optimalizace a numerické metody
+NIE-SIB:Network Security
+MIE-SIB.16:Network Security
+BIE-ST1:Network Technology 1
+PI-NSV:Neuronové sítě a výpočetní inteligence
+NIE-NSS:Normalized Software Systems
+NI-NSS:Normalized Software Systems
+NI-NUR:Návrh uživatelského rozhraní
+BIE-OOP:Object-Oriented Programming
+BI-OOP:Object-Oriented Programming
+BI-OPJ:Objektové programování v Javě
+BIK-OOP:Objektově orientované programování
+BIE-OSY:Operating Systems
+BIK-OSY:Operační systémy
+BI-OSY:Operační systémy
+NI-OSY:Operační systémy a systémové programování
+NI-OLI:Ovladače pro Linux
+NI-PDP:Paralelní a distribuované programování
+NIE-PDP:Parallel and Distributed Programming
+NIE-SYP:Parsing and Compilers
+PI-PRO:Plánování v robotice
+NI-BUI:Podniková informatika
+NI-EDW:Podnikové datové sklady
+NI-PIS:Podnikové informační systémy
+NI-KRY:Pokročilá kryptologie
+NI-PVR:Pokročilá virtuální realita
+NI-PAS:Pokročilé aspekty podnikání
+NI-PDB:Pokročilé databázové systémy
+PI-PPA:Pokročilé paralelní algoritmy
+PI-ROZ:Pokročilé rozpoznávání
+NI-IOS:Pokročilé techniky v iOS aplikacích
+NI-ARI:Počítačová aritmetika
+BI-PGR.21:Počítačová grafika
+NI-PG1:Počítačová grafika 1
+BI-PSI.21:Počítačové sítě
+BIK-PSI.21:Počítačové sítě
+BIK-PSI:Počítačové sítě
+BI-PSI:Počítačové sítě
+BI-PNO:Praktika v návrhu číslicových obvodů
+BIK-PST:Pravděpodobnost a statistika
+BI-PST:Pravděpodobnost a statistika
+BIE-PKM:Preparatory Mathematics
+UKR-PKM:Preparatory Mathematics for Ukrainian refugees
+BIE-PST:Probability and Statistics
+BIE-PJP:Programming Languages and Compilers
+BIE-PPA:Programming Paradigms
+BIE-PA1.21:Programming and Algorithmics 1
+BIE-PA2.21:Programming and Algorithmics 2
+BIE-PJV:Programming in Java
+BIE-PS2:Programming in shell 2
+BI-PJP:Programovací jazyky a překladače
+BI-PPA:Programovací paradigmata
+BIK-PPA:Programovací paradigmata
+BI-ACM:Programovací praktika 1
+BI-ACM4:Programovací praktika 4
+PI-PSC:Programovatelné obvody a SoC (systémy na čipu)
+BIK-PA1.21:Programování a algoritmizace 1
+BI-PA1.21:Programování a algoritmizace 1
+BI-PA2.21:Programování a algoritmizace 2
+BIK-PA2.21:Programování a algoritmizace 2
+NI-GPU:Programování a architektury grafických procesorů
+BI-PGA:Programování grafických aplikací
+BI-AND.21:Programování pro operační systém Android
+BI-CS1:Programování v C#
+BIK-PJV:Programování v Javě
+BI-PJV:Programování v Javě
+BI-PMA:Programování v Mathematica
+BI-PHP.1:Programování v PHP
+BI-PYT.21:Programování v Pythonu
+NI-RUB:Programování v Ruby
+BI-PJS.1:Programování v jazyku Javascript
+BI-JUL.21:Programování v jazyku Julia
+BI-KOT:Programování v jazyku Kotlin
+NI-PSL:Programování v jazyku Scala
+BI-PS2:Programování v shellu 2
+BIE-PRR.21:Project management
+BIK-PRR.21:Projektové řízení
+BI-PRR.21:Projektové řízení
+BI-PRR:Projektové řízení
+BI-PAI:Právo a informatika
+BI-PRP:Právo a podnikání
+NI-PDD:Předzpracování dat
+BI-PKM:Přípravný kurz matematiky
+NIE-REV:Reverse Engineering
+NI-REV:Reverzní inženýrství
+NI-ROZ:Rozpoznávaní
+NI-RUN:Runtime systémy
+BIE-GIT.21:SW Development Technologies
+BI-ANGS:Samostatná příprava na jazykovou zkoušku
+BIE-BEK:Secure Code
+BIE-BEZ:Security
+NIE-VSM:Selected statistical Methods
+NI-SWE:Semantický web a znalostní grafy
+BI-SCE1:Seminář počítačového inženýrství I
+NI-SCE1:Seminář počítačového inženýrství I
+NI-SCE2:Seminář počítačového inženýrství II
+BI-SCE2:Seminář počítačového inženýrství II
+PI-FME.1:Seminář z formálních specifikací
+BI-SZ1:Seminář znalostního inženýrství I
+BI-SZ2:Seminář znalostního inženýrství II
+NI-SZ1:Seminář znalostního inženýrství magisterský I
+NI-SZ2:Seminář znalostního inženýrství magisterský II
+PI-SCN:Semináře z číslicového návrhu
+NIE-HSC:Side-Channel Analysis in Hardware
+NI-SIM:Simulace a verifikace číslicových obvodů
+BIE-SI2.3:Software Engineering 2
+BIE-SI1.2:Software Engineering I
+PI-SWI:Softwarové inženýrství
+BI-SI2.3:Softwarové inženýrství 2
+BIK-SI2.3:Softwarové inženýrství 2
+BIK-SI1.2:Softwarové inženýrství I
+BI-SI1.2:Softwarové inženýrství I
+BI-SP1:Softwarový týmový projekt 1
+BIK-SP1:Softwarový týmový projekt 1
+BI-SP2.1:Softwarový týmový projekt 2
+BIK-SP2.1:Softwarový týmový projekt 2
+PI-SPL:Splnitelnost a plánování
+NI-SCR:Statistická analýza časových řad
+PI-STR:Stringologie
+BI-SVZ:Strojové vidění a zpracování obrazu
+BIK-SAP.21:Struktura a architektura počítačů
+BI-SAP.21:Struktura a architektura počítačů
+NI-SLA:Sublineární algoritmy
+BI-SEP:Světová ekonomika a podnikání I.
+NI-SEP:Světová ekonomika a podnikání II.
+NI-SYP:Syntaktická analýza a překladače
+NIE-SBF:System Security and Forensics
+BIE-SSB:System and Network Security
+NIE-TES:Systems Theory
+BIK-SSB:Systémová a síťová bezpečnost
+BI-SSB:Systémová a síťová bezpečnost
+NI-SBF:Systémová bezpečnost a forenzní analýza
+NI-DSS:Systémy podpory rozhodování
+BI-SRC:Systémy reálného času
+NI-SIB:Síťová bezpečnost
+BI-ST1:Síťové technologie 1
+BI-ST2:Síťové technologie 2
+BI-ST3:Síťové technologie 3
+BI-ST4:Síťové technologie 4
+BIE-SP1:Team Software Project 1
+BIE-SP2.2:Team Software Project 2
+BIE-TZP.21:Technological Fundamentals of Computers
+BI-TZP.21:Technologické základy počítačů
+BIK-TZP.21:Technologické základy počítačů
+BIK-TJV:Technologie Java
+BI-TJV:Technologie Java
+BI-XML:Technologie XML
+BI-GIT.21:Technologie pro vývoj SW
+BIK-GIT.21:Technologie pro vývoj SW
+NI-TVR:Technologie virtuální reality
+BI-TS1:Teoretický seminář I
+BI-TS2:Teoretický seminář II
+NI-TS1:Teoretický seminář magisterský I
+NI-TS2:Teoretický seminář magisterský II
+PI-TGR:Teorie grafů
+NI-TKA:Teorie kategorií
+NI-TNN:Teorie neuronových sítí
+NI-CPX:Teorie složitosti
+NI-TES:Teorie systémů
+NIE-TSP:Testing and Reliability
+NI-TSP:Testování a spolehlivost
+PI-TMN:Text Mining
+BI-TIS:Tvorba informačních systémů
+NI-TSW:Tvorba softwarových produktů
+BI-TUR:Tvorba uživatelského rozhraní
+BIK-TUR:Tvorba uživatelského rozhraní
+BI-TWA.1:Tvorba webových aplikací
+PI-TPL:Type Systems for Programming Languages
+BI-TEX:Typografie a TeX
+NI-UMI:Umělá inteligence
+BIE-ADU.1:Unix Administration
+BIE-UOS.21:Unix-like Operating Systems
+BIK-UOS.21:Unixové operační systémy
+BI-UOS.21:Unixové operační systémy
+MIE-NUR.16:User Interface Design
+BIE-TUR:User Interface Design
+PI-ESC:Vestavná bezpečnost
+NI-EHW:Vestavné hardwarové prostředky
+BI-VES:Vestavné systémy
+NI-ESW:Vestavný software
+NI-VCC:Virtualizace a cloud computing
+NIE-VCC:Virtualization and Cloud Computing
+BI-VHS:Virtuální herní světy
+BI-VR1:Virtuální realita I
+BI-VR2:Virtuální realita II
+BI-VAK.21:Vybrané aplikace kombinatoriky
+NI-APR:Vybrané metody analýzy programů
+NI-PON:Vybrané partie z optimalizace a numeriky
+NI-VSM:Vybrané statistické metody
+BI-VWM.21:Vyhledávání na webu a v multimediálních databázích
+NI-VMM:Vyhledávání v multimédiích
+BI-VZD:Vytěžování znalostí z dat
+NI-VYC:Vyčíslitelnost
+PI-VAP:Vyšší architektura počítačů
+NI-MCC:Výpočty na vícejádrových procesorech
+NI-VEM:Vědecké myšlení
+NIE-DDW:Web Data Mining
+BIE-ADW.1:Windows Administration
+NIE-BPS:Wireless Computer Networks
+MIE-SEP:World Economy and Business
+BI-ANG1:Zkouška z angličtiny bez přípravných kurzů
+BI-ANG:Zkouška z angličtiny po zápočtu z BI-A2L
+BI-ZNS:Znalostní systémy
+BI-ZDM:Základy diskrétní matematiky
+BIK-ZDM:Základy diskrétní matematiky
+BI-ZIVS:Základy inteligentních vestavných systémů
+BIK-ZMA:Základy matematické analýzy
+BI-ZMA:Základy matematické analýzy
+BI-MIK:Základy mikroekonomie
+BI-ZPI:Základy procesního inženýrství
+BI-ZUM:Základy umělé inteligence
+BI-IOS:Základy vývoje iOS aplikací pro iPhone a iPad
+BI-ZWU:Základy webu a uživatelská rozhraní
+BI-ZRS:Základy řízení systému
+BI-ULI:Úvod do Linuxu
+BI-EHD:Úvod do evropských hospodářských dějin
+BIK-KSA:Úvod do kulturní a sociální antropologie
+BI-KSA:Úvod do kulturní a sociální antropologie
+NI-LNG:Úvod do lingvistiky pro informatiky
+UKCJ7:Český jazyk 7 pro ukrajinské uprchlíky
+NI-CAP:Člověk v antropologických perspektivách

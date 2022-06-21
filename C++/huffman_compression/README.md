@@ -1,0 +1,15 @@
+# Huffman code decompression
+
+Úkolem je vytvořit sadu C/C++ funkcí, které dokáží dekomprimovat a komprimovat vstupní soubor Huffmanovým kódem. Úloha nabízí různé stupně obtížnosti:
+
+povinná část úlohy požaduje pouze funkci pro dekompresi, navíc v rozbalených datech se nachází pouze ASCII znaky (0-127),
+nepovinné testy zkoušejí správnost dekomprese, v rozbalených datech jsou texty v kódování UTF-8,
+bonusové testy zkoušejí správnost komprese i dekomprese, komprimují/dekomprimují se soubory s texty v kódování UTF-8.
+Huffmanův kód je princip komprese dat, který využívá statistických vlastností ukládaných dat. V typických souborech jsou různé hodnoty (např. znaky) zastoupeny s velmi nerovnoměrnou četností. Například mezery jsou v typickém textu velmi časté, naopak znak ř bude málo frekventovaný. Huffmanův kód zpracuje analýzu četnosti výskytu jednotlivých znaků a podle četností přidělí jednotlivým znakům kódy. Kódy mají různou délku, typicky 1 až desítky bitů. Často se vyskytující znaky dostanou kódy kratší, málo časté znaky dostanou kódy delší. To v důsledku vede k úspoře místa.
+
+Zavedením různé délky kódů pro jednotlivé znaky se ale objeví jiný problém. Musíme být schopni detekovat, kde kódovaný znak končí, tedy kolik bitů je potřeba načíst, abychom správně dekódovali právě jeden znak. Pro fixní počet bitů na znak je to snadné. Např. ASCII má 8 bitů/znak, tedy co bajt, to znak. UTF-8 je složitější, jeden znak zabírá 1 až 4 bajty a je potřeba kontrolovat strukturu čtených bajtů, aby kód čtené UTF-8 bajty správně seskupil. U Huffmanova kódu je to ještě obtížnější. Čtečka zpracovává jednotlivé bity a podle podoby načtených bitů pozná, kdy má skončit. Huffmanův kód je kódem prefixovým, tedy žádný kód není prefixem jiného kódu. Pokud například mezeru kódujeme dvojicí bitů 00, pak posloupnosti 001, 000, 0001, ... nejsou obsazené žádným jiným kódem. Tím je garantována jednoznačnost dekódování.
+
+Druhým problémem je doplnění na celé bajty a správná detekce posledního znaku při dekódování. Protože kódy mohou mít různé délky, nemusí být počet bitů po komprimaci násobkem 8. Tedy v posledním bajtu mohou být některé bity nevyužité. V souborech ale musíme pracovat s celými bajty, tedy zbývající bity musíme nějakými nulami nebo jedničkami doplnit. Při ukládání to není problém (prostě něco přidáme), ale při načítání bychom takto přidané bity navíc mohli dekódovat jako další znaky navíc. Proto ukládaná data rozdělíme do úseků (chunks), pro které bude známá jejich délka. Na začátku každého chunku uložíme indikátor:
+
+jeden bit s hodnotou 1. Tento bit indikuje, že následuje chunk ukládající 4096 znaků (kódovaných Huffmanovým kódem),
+jeden bit s hodnotou 0 následovaný 12 bity, které udávají délku chunku (tedy délka chunku bude 0 až 4095 znaků). Takto bude v souboru označen poslední chunk, aby bylo jasně určeno, kde skončit s dekompresí (poslední chunk může kódovat 0 znaků, pokud vstupní soubor obsahoval počet znaků, který je násobkem 4096).

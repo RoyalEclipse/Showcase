@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# prepares the line, replaces various splitting chars with spaces
+STATUS=$( cat rz_dispatcher.log | grep 'status' | tail -1 | tr '|>-' ' ' | cut -d'[' -f2)
+
+# simple cut by field
+DATE=$( echo $STATUS | cut -d' ' -f1)
+TIME=$( echo $STATUS | cut -d' ' -f2 | cut -d']' -f1 )
+SEMESTER=$( echo $STATUS | cut -d' ' -f5 | cut -d'=' -f2 )
+AKTSEM=$( echo $STATUS | cut -d' ' -f6 | cut -d'=' -f2 )
+CAC_STATUS=$( echo $STATUS | cut -d' ' -f8 | cut -d'=' -f2 )
+CAD_STATUS=$( echo $STATUS | cut -d' ' -f9 | cut -d'=' -f2 )
+
+# printing
+echo "DATE		$DATE"
+echo "TIME		$TIME"
+echo "SEMESTER	$SEMESTER"
+echo "AKTSEM		$AKTSEM"
+echo "CAC_STATUS	$CAC_STATUS"
+echo "CAD_STATUS	$CAD_STATUS"

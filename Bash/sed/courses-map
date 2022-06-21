@@ -1,0 +1,66 @@
+#!/bin/bash
+CURROOT=$( pwd )
+URL="https://bilakniha.cvut.cz/cs/f8-predmety.html"
+TEMPFILE=$( mktemp )
+TEMPFILE2=$( mktemp )
+
+trap cleanup EXIT
+
+# removes all temporary files and the file structure
+cleanup()
+{
+    rm "$TEMPFILE"
+    rm "$TEMPFILE2"
+    if [ $REMOVEALL -eq 1 ];
+    then
+        cd "$CURROOT"
+        echo "nothin to remove"
+    fi
+}
+
+# prints help text if -h or an incorrect parameter was used
+Help()
+{
+    TEMPCODES=$( mktemp )
+    TEMP=$( mktemp )
+    MAP=$( mktemp )
+
+    echo "Thank you for using the Umbrella Corp Courses-map Program!"
+    echo "OPTIONS"
+    echo "-h Shows you this text!"
+    echo "-r removes the resulting file structure and all generated files"
+    echo "Thats it, have fun!"
+    exit
+}
+
+REMOVEALL=0
+# loading of options
+while getopts "hr" option; do
+   case $option in
+        h) Help;;
+        r) REMOVEALL=1;;
+        ?) Help;;
+   esac
+done
+
+# temporary file generation
+
+
+# gets all codes and saves to tempcodes
+wget -qO temphtml.txt "$URL"
+HTML=$( cat temphtml.txt )
+echo $HTML | sed -E 's/.*<table class(.*)<\/table.*/\1\n/g' | sed -E 's/<\/tr>/\n/g'| cut -d'>' -f3 | cut -d'<' -f1 | sed -E '/[[:blank:]]+/d'| sed -E '/^$/d' > "$TEMPFILE"
+
+#this is like the 50th iteration, if you see this it means i have given up in order to preserve my sanity, this has been incredibly difficult
+# i have tried about 5 different approaches and all of them suck, after i started using two while loops and eval in my last try
+# i lost all hope that i will ever complete this, im sorry but i will try to finish the rest at least, as awk seems to treat me much better
+# that being said, sed sucks.
+cat "$TEMPFILE" | sed -n '/^BI-/p' > "$TEMPFILE2"
+
+while read -r line;
+do
+
+    sed "" "$TEMPFILE"
+
+
+done < "$TEMPFILE2"

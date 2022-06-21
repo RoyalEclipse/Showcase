@@ -1,0 +1,64 @@
+#!/bin/bash
+
+TEMPFILE=$(mktemp)
+WANTVERBOSE=0
+WANTDEBUG=0
+
+cleanup()
+{
+    rm "$TEMPFILE"
+}
+
+trap cleanup exit
+
+while getopts "hvdf:" option; do
+   case $option in
+      h)
+         echo "h for help, v for verbose, d for debug codes, f with path for conf file location, its simple man"
+         exit;;
+      v)
+         WANTVERBOSE=1
+         ;;
+      d)
+         WANTDEBUG=1
+         ;;
+      f)
+         CONFSRC="${OPTARG[0]}"
+         ;;
+      *)
+         exit 2
+         ;;
+   esac
+done
+
+# tests if confsrc is defined
+if [ -z "$CONFSRC" ]
+then
+    if [ $WANTDEBUG == 1 ]
+    then
+        echo "1"
+        exit 1
+    else
+        exit 1
+    fi
+fi
+
+# from test    asdsd/sadasd/ssd
+# to test="asdsd/sadasd/ssd"
+sed -E 's/^[ ]+(.*)$/\1/g; /^\#/d; s/^(.+) \#.*$/\1/' "$CONFSRC" | tr -s ' ' |tr ' ' '=' | sed -E 's/(.*=)(.+)[#]?$/\1\"\2\"/g' > "$TEMPFILE"
+
+# sets the variables
+# source "$TEMPFILE"
+
+if [ $WANTVERBOSE == 1 ]
+then
+    cat "$TEMPFILE"
+fi
+
+if [ $WANTDEBUG == 1 ]
+then
+    echo "0"
+    exit 0
+else
+    exit 0
+fi

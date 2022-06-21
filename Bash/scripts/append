@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# takes $2 and copies in contents from $1, basically mass append
+# if you want to empty $2 first then empty it before calling this
+function array_cp () {
+
+local -n tmpNEW=$1
+local -n tmpCESTA=$2
+
+# check for empty
+if [ ${#tmpNEW[@]} -eq 0 ]; then
+    echo "the array is empty dude what am i supposed to copy"
+    return 1
+fi
+
+# copy
+for field in "${tmpNEW[@]}";
+do    
+    tmpCESTA+=("$field");
+done
+
+}
+
+function append()
+{
+    local -a tempArray
+
+    for field in "${CESTA[@]}"; do    
+        
+        if [[ "$field" == "$1" ]]; then
+            continue
+        fi
+
+        tempArray+=("$field")
+
+    done
+
+    tempArray+=("$1")
+
+    CESTA=("${tempArray[@]}")
+}
+
+printArray()
+{
+    local -n temp
+    temp="$1"
+    for field in "${temp[@]}"; do
+        printf "%s\n" "$field"
+    done
+    echo -e ""
+}
+
+declare -a CESTA
+declare -a NEW
+NEW=("killme" ihatemylife nevergonnagiveyouup "never gonna let you down" ahahah)
+
+# printArray NEW
+
+
+# echo "printing cesta with contents of new:"
+array_cp NEW CESTA
+
+# printArray CESTA
+
+PATH_SPACED=$( echo "$PATH" | tr ':' '\n' )
+
+for field in $PATH_SPACED; do
+    CESTA+=("$field")
+done
+
+printArray CESTA
+
+append "I HATE MY LIFE DUDE"
+
+printArray CESTA

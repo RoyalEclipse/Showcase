@@ -1,0 +1,17 @@
+/COURSE-CODE:/{
+    n
+    s/^[ \t]*(.*)$/s:--COURSE-CODE--:\1:g/p
+    z
+}
+
+/COURSECODE:/{
+    n
+    s/^[ \t]*(.*)$/s:--COURSECODE--:\1:g/p
+    z
+}
+
+/COURSE-NAME:/{
+    n
+    s/^[ \t]*(.*)$/s:--COURSE-NAME--:\1:g/p
+    z
+}
