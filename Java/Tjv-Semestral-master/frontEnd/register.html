@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="login.css">
+
+    <title>Register</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand mx-3 active" href="./landing.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html">Login</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./register.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://localhost:6060/swagger-ui.html">Admin panel</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!-- Shamelessly yoinked from here: https://bootsnipp.com/snippets/dldxB -->
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+  
+      <div class="fadeIn first">
+          <p>Register form.</p>
+      </div>
+
+      <form id="registerForm" onsubmit="sendData(event)">
+        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name"required>
+        <input type="text" id="surname" class="fadeIn third" name="surname" placeholder="surname"required>
+        <input type="email" id="email" class="fadeIn third" name="email" placeholder="email"required>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"required>
+        <input type="tel" id="phone" class="fadeIn third" name="phoneNumber" placeholder="phone number"required>
+        <input type="number" id="credits" class="fadeIn third" name="credits" placeholder="starting credits"required>
+
+        <input type="submit" class="fadeIn fourth" value="Register">
+      </form>
+  
+      <div id="formFooter">
+          <p>Your user id is:</p>
+          <p id="res"></p>
+      </div>
+  
+    </div>
+  </div>
+    Test register
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="register.js"></script>
+</body>
+</html>
