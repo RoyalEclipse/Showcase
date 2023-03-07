@@ -13,11 +13,6 @@ Uživatel může vytvořit objednávku a "zakoupit" si nějáký produkt. Na str
 ## Komplexní dotaz navíc
 Při tvorbě objednávky bych chtěl implementovat aby server odhadnul čas doručení. Client-side si vezme od uživatele kam má "doručit" tu objednávku. Server potom vybere nejbližší sklady které obsahují produkty které si uživatel objednal, spojí je leteckou čarou a spočítá čas doručení, pravděpodobně za pomocí BFS/Dijkstry. Předpokládejme že to bude hyper-moderní eshop co doručuje za pomoci dronů.
 
-## Data model
-![data model](/data-model.png "data model")
-
-## Instukce ke spuštění a pro kontrolující
-
 ### Databáze
 Databázi doporučuji spustit přes docker,
 pro spuštění přes dockerfile:
